@@ -1,0 +1,23 @@
+library(ggplot2)
+library(tidyr)
+library(RColorBrewer)
+library(ggsci)
+setwd("E:/Downloads/R")
+econ_active <- read.csv("econ_active.csv")
+colnames(econ_active)[colnames(econ_active) == "ï..Month"] <- "Month"
+econ_active
+
+# Econ_active survey
+econ_active %>%
+  gather("Gender", "Population",-Month) %>%
+  ggplot(aes(Month, Population, fill = Gender)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  theme_bw() +
+  labs(title="Economically Active Population | Korea 2020 - 2021") + 
+  theme(plot.title = element_text(face = "bold"),
+        axis.title.x = element_text(face = "bold"),
+        axis.title.y = element_text(face = "bold"),
+        legend.title = element_text(face = "bold")
+        ) +
+  scale_fill_aaas()  + 
+  scale_y_continuous(limits = c(0, 30000), breaks=seq(0, 30000, 5000))
