@@ -14,7 +14,7 @@ econ_active$Month <- factor(econ_active$Month, levels = econ_active$Month)
 econ_active %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
-  geom_bar(position = "dodge", stat = "identity") +
+  geom_bar(width = 0.7, position = "dodge", stat = "identity") +
   theme_minimal() +
   labs(title = "Economically Active Population By Gender | Korea 2020 - 2021", 
        x = "Month", y = "Population (thousands)") + 
@@ -24,6 +24,7 @@ econ_active %>%
         legend.title = element_text(face = "bold")
   ) +
   scale_fill_aaas()  + 
+  coord_cartesian(ylim = c(5000, 30000)) +
   scale_y_continuous(limits = c(0, 30000), breaks=seq(0, 30000, 5000))
 
 # employed csv
@@ -36,7 +37,7 @@ employed$Month <- factor(employed$Month, levels = employed$Month)
 employed %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
-  geom_bar(position = "dodge", stat = "identity") +
+  geom_bar(width = 0.7, position = "dodge", stat = "identity") +
   theme_minimal() +
   labs(title = "Employed Population By Gender | Korea 2020 - 2021", 
        x = "Month", y = "Population (thousands)") + 
@@ -46,6 +47,7 @@ employed %>%
         legend.title = element_text(face = "bold")
   ) +
   scale_fill_aaas()  + 
+  coord_cartesian(ylim = c(5000, 30000)) +
   scale_y_continuous(limits = c(0, 30000), breaks=seq(0, 30000, 5000))
 
 # unemployed csv
@@ -58,7 +60,7 @@ unemployed$Month <- factor(unemployed$Month, levels = unemployed$Month)
 unemployed %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
-  geom_bar(position = "dodge", stat = "identity") +
+  geom_bar(width = 0.7, position = "dodge", stat = "identity") +
   theme_minimal() +
   labs(title = "Unemployed Population By Gender | Korea 2020 - 2021", 
        x = "Month", y = "Population (thousands)") + 
@@ -67,7 +69,8 @@ unemployed %>%
         axis.title.y = element_text(face = "bold"),
         legend.title = element_text(face = "bold")
   ) + 
-  scale_fill_aaas()  + 
+  scale_fill_aaas()  +
+  coord_cartesian(ylim = c(300,1600)) +
   scale_y_continuous(limits = c(0, 1600), breaks=seq(0, 1600, 100))
 
 # perc participation csv
@@ -80,7 +83,7 @@ participation$Month <- factor(participation$Month, levels = participation$Month)
 participation %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
-  geom_bar(position = "dodge", stat = "identity") +
+  geom_bar(width = 0.7, position = "dodge", stat = "identity") +
   theme_minimal() +
   labs(title = "Percentage Workforce Participation By Gender | Korea 2020 - 2021", 
        x = "Month", y = "Population (thousands)") + 
@@ -89,9 +92,9 @@ participation %>%
         axis.title.y = element_text(face = "bold"),
         legend.title = element_text(face = "bold")
   ) + 
-  scale_fill_aaas()  + 
-  coord_cartesian(ylim = c(45, 80)) +
-  scale_y_continuous(breaks=seq(45, 80, 5))
+  scale_fill_aaas() + 
+  coord_cartesian(ylim = c(45, 75)) +
+  scale_y_continuous(breaks=seq(45, 75, 5))
 
 
 
