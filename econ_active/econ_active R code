@@ -81,12 +81,12 @@ participation
 participation$Month <- factor(participation$Month, levels = participation$Month)
 # econ_active plot
 participation %>%
-  gather("Gender", "Population", -Month) %>%
-  ggplot(aes(x= Month, y = Population, fill = Gender)) +
+  gather("Gender", "Percentage", -Month) %>%
+  ggplot(aes(x= Month, y = Percentage, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
   theme_minimal() +
   labs(title = "Percentage Workforce Participation By Gender | Korea 2020 - 2021", 
-       x = "Month", y = "Population (thousands)") + 
+       x = "Month", y = "Percentage") + 
   theme(plot.title = element_text(face = "bold"),
         axis.title.x = element_text(face = "bold"),
         axis.title.y = element_text(face = "bold"),
@@ -94,7 +94,7 @@ participation %>%
   ) + 
   scale_fill_aaas() + 
   coord_cartesian(ylim = c(45, 75)) +
-  scale_y_continuous(breaks=seq(45, 75, 5))
+  scale_y_continuous(breaks=seq(45, 75, 5), labels = scales::percent_format(scale = 1))
 
 
 
