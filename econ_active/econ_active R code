@@ -95,6 +95,3 @@ participation %>%
   scale_fill_aaas() + 
   coord_cartesian(ylim = c(45, 75)) +
   scale_y_continuous(breaks=seq(45, 75, 5), labels = scales::percent_format(scale = 1))
-
-
-
