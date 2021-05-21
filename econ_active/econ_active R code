@@ -1,3 +1,4 @@
+install.packages("ggplot2", "tidyr", "RcolorBrewer", "ggsci")
 library(ggplot2)
 library(tidyr)
 library(RColorBrewer)
@@ -11,7 +12,7 @@ econ_active
 # commit x-bar to prevent alphabetical reordering
 econ_active$Month <- factor(econ_active$Month, levels = econ_active$Month)
 # econ_active plot
-econ_active %>%
+econ_active_plot <- econ_active %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -28,6 +29,7 @@ econ_active %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+econ_active_plot 
 
 # employed csv
 employed <- read.csv("Employed.csv")
@@ -36,7 +38,7 @@ employed
 # commit x-bar to prevent alphabetical reordering
 employed$Month <- factor(employed$Month, levels = employed$Month)
 # econ_active plot
-employed %>%
+employed_plot <- employed %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -53,6 +55,7 @@ employed %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+employed_plot
 
 # unemployed csv
 unemployed <- read.csv("Unemployed.csv")
@@ -61,7 +64,7 @@ unemployed
 # commit x-bar to prevent alphabetical reordering
 unemployed$Month <- factor(unemployed$Month, levels = unemployed$Month)
 # econ_active plot
-unemployed %>%
+unemployed_plot <- unemployed %>%
   gather("Gender", "Population", -Month) %>%
   ggplot(aes(x= Month, y = Population, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -78,6 +81,7 @@ unemployed %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+unemployed_plot 
 
 # perc participation csv
 participation <- read.csv("perc_participation.csv")
@@ -86,7 +90,7 @@ participation
 # commit x-bar to prevent alphabetical reordering
 participation$Month <- factor(participation$Month, levels = participation$Month)
 # econ_active plot
-participation %>%
+participation_plot <- participation %>%
   gather("Gender", "Percentage", -Month) %>%
   ggplot(aes(x= Month, y = Percentage, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -103,6 +107,7 @@ participation %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+participation_plot
 
 # unemployed% csv
 unemployed_perc <- read.csv("Unemployed%.csv")
@@ -111,7 +116,7 @@ unemployed_perc
 # commit x-bar to prevent alphabetical reordering
 unemployed_perc$Month <- factor(unemployed_perc$Month, levels = unemployed_perc$Month)
 # econ_active plot
-unemployed_perc %>%
+unemployed_perc_plot <- unemployed_perc %>%
   gather("Gender", "Percentage", -Month) %>%
   ggplot(aes(x= Month, y = Percentage, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -128,6 +133,7 @@ unemployed_perc %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+unemployed_perc_plot
 
 # Employed% csv
 employed_perc <- read.csv("Employed%.csv")
@@ -136,7 +142,7 @@ employed_perc
 # commit x-bar to prevent alphabetical reordering
 employed_perc$Month <- factor(employed_perc$Month, levels = employed_perc$Month)
 # econ_active plot
-employed_perc %>%
+employed_perc_plot <- employed_perc %>%
   gather("Gender", "Percentage", -Month) %>%
   ggplot(aes(x= Month, y = Percentage, fill = Gender)) +
   geom_bar(width = 0.7, position = "dodge", stat = "identity") +
@@ -153,3 +159,7 @@ employed_perc %>%
   scale_fill_manual(values = c("Female" = "#ff69b4", 
                                "Male" = "#00bfff",
                                "All" = "#90ee90"))
+employed_perc_plot
+
+# ggplotly
+ggplotly(econ_active_plot)
