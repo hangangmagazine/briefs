@@ -181,3 +181,8 @@ Sys.setenv("plotly_api_key"="Q5tudHZbCM87xHatuAOJ")
 
 #Save to online file
 api_create(econ_active_plot, filename = "Econ Active Population | Korea 2021")
+api_create(employed_plot, filename = "Employed Population By Gender | Korea 2021")
+api_create(unemployed_plot, filename = "Unemployed Population By Gender | Korea 2021")
+api_create(participation_plot, filename = "Percentage Workfroce Participation By Gender | Korea 2021")
+api_create(unemployed_perc_plot, filename = "Percentage Unemployment By Gender | Korea 2021")
+api_create(employed_perc_plot, filename = "Percentage Employment By Gender | Korea 2021")
