@@ -163,3 +163,21 @@ employed_perc_plot
 
 # ggplotly
 ggplotly(econ_active_plot)
+ggplotly(employed_plot)
+ggplotly(unemployed_plot)
+ggplotly(participation_plot)
+ggplotly(unemployed_perc_plot)
+ggplotly(employed_perc_plot)
+
+
+
+##### Save it  on ploty
+
+#Create a plotly account: https://plot.ly/
+#Create API Keys: https://plot.ly/settings/api
+
+Sys.setenv("plotly_username"="hangangmagazine")
+Sys.setenv("plotly_api_key"="Q5tudHZbCM87xHatuAOJ")
+
+#Save to online file
+api_create(econ_active_plot, filename = "Econ Active Population | Korea 2021")
